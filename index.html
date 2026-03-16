@@ -156,7 +156,8 @@
   .bar-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
   .bar-name { font-family: var(--sans); font-size: 12px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; }
   .bar-score { font-family: var(--serif); font-size: 15px; font-weight: 300; }
-  .bar-track { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 6px; }
+  .bar-track { height: 4px; background: rgba(255,255,255,0.07); margin-bottom: 6px; border-radius: 2px; }
+  .bar-fill { height: 100%; transition: width 0.8s ease; border-radius: 2px; }
   .bar-fill { height: 100%; transition: width 0.8s ease; }
   .bar-note { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.7; }
   .flag-list { display: flex; flex-direction: column; gap: 8px; }
@@ -322,7 +323,7 @@ let statusTimer;
 function startStatus(){let i=0;const el=document.getElementById('statusText');document.getElementById('statusBar').style.display='flex';el.textContent=STATUS[0];statusTimer=setInterval(()=>{i=(i+1)%STATUS.length;el.textContent=STATUS[i];},2200);}
 function stopStatus(){clearInterval(statusTimer);document.getElementById('statusBar').style.display='none';}
 function scoreClass(s){return s<=3.5?'c-low':s<=6.5?'c-med':'c-high';}
-function barColor(s){return s<=3?'#5A8A5A':s<=6?'#C9A84C':'#C0665A';}
+function barColor(s){return s>=7?'#5A8A5A':s>=4?'#C9A84C':'#C0665A';}
 function render(data){
   const ts=new Date();
   const id=`AVR-${ts.getFullYear()}${String(ts.getMonth()+1).padStart(2,'0')}${String(ts.getDate()).padStart(2,'0')}-${Math.floor(Math.random()*9000+1000)}`;
