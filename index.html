@@ -158,7 +158,6 @@
   .bar-score { font-family: var(--serif); font-size: 15px; font-weight: 300; }
   .bar-track { height: 4px; background: rgba(255,255,255,0.07); margin-bottom: 6px; border-radius: 2px; }
   .bar-fill { height: 100%; transition: width 0.8s ease; border-radius: 2px; }
-  .bar-fill { height: 100%; transition: width 0.8s ease; }
   .bar-note { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--muted); line-height: 1.7; }
   .flag-list { display: flex; flex-direction: column; gap: 8px; }
   .flag-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; border: 1px solid rgba(192,102,90,0.2); background: rgba(192,102,90,0.04); }
@@ -318,64 +317,70 @@
   <span>AI Intelligence · Not Legal Advice</span>
 </footer>
 <script>
-const STATUS=['Scanning domain registration records','Checking fraud databases','Searching BBB and business registry','Analyzing Amazon compliance signals','Cross-referencing review patterns','Verifying physical presence','Calculating weighted risk score','Generating intelligence report'];
-let statusTimer;
-function startStatus(){let i=0;const el=document.getElementById('statusText');document.getElementById('statusBar').style.display='flex';el.textContent=STATUS[0];statusTimer=setInterval(()=>{i=(i+1)%STATUS.length;el.textContent=STATUS[i];},2200);}
+var SB_URL='https://tayxymrvgesjvfiljntx.supabase.co';
+var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRheXh5bXJ2Z2VzanZmaWxqbnR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDIwODQzNDUsImV4cCI6MjA1NzY2MDM0NX0.8D7lMPMJqXXksc4ZWWeiLJWx_I1lkOIcLbIJRpOHLAA';
+var STATUS=['Scanning domain registration records','Checking fraud databases','Searching BBB and business registry','Analyzing Amazon compliance signals','Cross-referencing review patterns','Verifying physical presence','Calculating weighted risk score','Generating intelligence report'];
+var statusTimer;
+function startStatus(){var i=0;var el=document.getElementById('statusText');document.getElementById('statusBar').style.display='flex';el.textContent=STATUS[0];statusTimer=setInterval(function(){i=(i+1)%STATUS.length;el.textContent=STATUS[i];},2200);}
 function stopStatus(){clearInterval(statusTimer);document.getElementById('statusBar').style.display='none';}
 function scoreClass(s){return s<=3.5?'c-low':s<=6.5?'c-med':'c-high';}
 function barColor(s){return s>=7?'#5A8A5A':s>=4?'#C9A84C':'#C0665A';}
-function render(data){
-  const ts=new Date();
-  const id=`AVR-${ts.getFullYear()}${String(ts.getMonth()+1).padStart(2,'0')}${String(ts.getDate()).padStart(2,'0')}-${Math.floor(Math.random()*9000+1000)}`;
-  document.getElementById('reportMeta').textContent=`${id} · ${ts.toLocaleString()}`;
+function saveReport(report,domain){
+  fetch(SB_URL+'/rest/v1/reports',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify({domain:domain,company_name:report.company_name||'',overall_score:report.overall_score||0,verdict:report.verdict||'',full_report:report})}).catch(function(){});
+}
+function render(data,domain){
+  var ts=new Date();
+  var id='AVR-'+ts.getFullYear()+String(ts.getMonth()+1).padStart(2,'0')+String(ts.getDate()).padStart(2,'0')+'-'+Math.floor(Math.random()*9000+1000);
+  document.getElementById('reportMeta').textContent=id+' · '+ts.toLocaleString();
   document.getElementById('reportCompany').textContent=data.company_name;
   document.getElementById('reportDomain').textContent=data.website;
-  const box=document.getElementById('scoreBox');
+  var box=document.getElementById('scoreBox');
   box.className='score-box '+scoreClass(data.overall_score);
   document.getElementById('scoreNum').textContent=Number(data.overall_score).toFixed(1);
   document.getElementById('verdictLabel').textContent=data.verdict;
   document.getElementById('verdictDesc').textContent=data.verdict_summary;
-  document.getElementById('overviewGrid').innerHTML=[['Company',data.company_name],['Website',data.website],['Address',data.address],['Domain Age',data.domain_age],['Category',data.business_category]].map(([l,v])=>`<div><div class="kv-label">${l}</div><div class="kv-value">${v||'—'}</div></div>`).join('');
-  document.getElementById('barList').innerHTML=(data.categories||[]).map(c=>{const pct=Math.round((c.score/10)*100);const col=barColor(c.score);return`<div><div class="bar-header"><span class="bar-name">${c.name}</span><span class="bar-score" style="color:${col}">${Number(c.score).toFixed(1)} / 10</span></div><div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${col}"></div></div><div class="bar-note">${c.explanation}</div></div>`;}).join('');
-  document.getElementById('flagList').innerHTML=(data.red_flags||[]).length?data.red_flags.map(f=>`<div class="flag-item"><div class="flag-sq"></div><div class="flag-text">${f}</div></div>`).join(''):'<div class="flag-text" style="color:var(--muted)">No major red flags identified.</div>';
-  document.getElementById('stepList').innerHTML=(data.due_diligence_steps||[]).map((s,i)=>`<div class="step-item"><div class="step-n">${i+1}.</div><div class="step-text">${s}</div></div>`).join('');
+  document.getElementById('overviewGrid').innerHTML=[['Company',data.company_name],['Website',data.website],['Address',data.address],['Domain Age',data.domain_age],['Category',data.business_category]].map(function(a){return '<div><div class="kv-label">'+a[0]+'</div><div class="kv-value">'+(a[1]||'—')+'</div></div>';}).join('');
+  document.getElementById('barList').innerHTML=(data.categories||[]).map(function(c){var pct=Math.round((c.score/10)*100);var col=barColor(c.score);return '<div><div class="bar-header"><span class="bar-name">'+c.name+'</span><span class="bar-score" style="color:'+col+'">'+Number(c.score).toFixed(1)+' / 10</span></div><div class="bar-track"><div class="bar-fill" style="width:'+pct+'%;background:'+col+'"></div></div><div class="bar-note">'+c.explanation+'</div></div>';}).join('');
+  document.getElementById('flagList').innerHTML=(data.red_flags||[]).length?(data.red_flags||[]).map(function(f){return '<div class="flag-item"><div class="flag-sq"></div><div class="flag-text">'+f+'</div></div>';}).join(''):'<div class="flag-text" style="color:var(--muted)">No major red flags identified.</div>';
+  document.getElementById('stepList').innerHTML=(data.due_diligence_steps||[]).map(function(s,i){return '<div class="step-item"><div class="step-n">'+(i+1)+'.</div><div class="step-text">'+s+'</div></div>';}).join('');
   document.getElementById('conclusionText').textContent=data.conclusion;
-  document.getElementById('reportFootnote').textContent=`${data.data_sources_note||'Report generated via AI-assisted web intelligence.'} · This report is for due diligence purposes only and does not constitute legal or financial advice.`;
+  document.getElementById('reportFootnote').textContent=(data.data_sources_note||'Report generated via AI-assisted web intelligence.')+' · This report is for due diligence purposes only and does not constitute legal or financial advice.';
   document.getElementById('report').style.display='block';
   document.getElementById('report').scrollIntoView({behavior:'smooth',block:'start'});
+  saveReport(data,domain);
 }
 async function runAnalysis(){
-  const raw=document.getElementById('supplierInput').value.trim();
+  var raw=document.getElementById('supplierInput').value.trim();
   if(!raw)return;
-  const supplier=raw.replace(/^https?:\/\//i,'').replace(/\/.*$/,'');
-  const btn=document.getElementById('analyzeBtn');
-  const errEl=document.getElementById('errorBar');
+  var supplier=raw.replace(/^https?:\/\//i,'').replace(/\/.*$/,'');
+  var btn=document.getElementById('analyzeBtn');
+  var errEl=document.getElementById('errorBar');
   btn.disabled=true;errEl.style.display='none';document.getElementById('report').style.display='none';
   startStatus();
   try{
-    const res=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({supplier})});
-    const d=await res.json();
-    if(!res.ok)throw new Error(d.error?.message||'API error');
-    const text=(d.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('').replace(/```json|```/g,'').trim();
-    const match=text.match(/\{[\s\S]*\}/);
+    var res=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({supplier:supplier})});
+    var d=await res.json();
+    if(!res.ok)throw new Error(d.error&&d.error.message?d.error.message:'API error');
+    var text=(d.content||[]).filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('').replace(/```json|```/g,'').trim();
+    var match=text.match(/\{[\s\S]*\}/);
     if(!match)throw new Error('No report generated');
-    stopStatus();render(JSON.parse(match[0]));
+    stopStatus();render(JSON.parse(match[0]),supplier);
   }catch(err){stopStatus();errEl.textContent='Error: '+err.message;errEl.style.display='block';}
   finally{btn.disabled=false;}
 }
 document.getElementById('analyzeBtn').addEventListener('click',runAnalysis);
-document.getElementById('supplierInput').addEventListener('keydown',e=>{if(e.key==='Enter')runAnalysis();});
-document.getElementById('unlockBtn').addEventListener('click',async()=>{
-  const name=document.getElementById('gateName').value.trim();
-  const phone=document.getElementById('gatePhone').value.trim();
-  const email=document.getElementById('gateEmail').value.trim();
+document.getElementById('supplierInput').addEventListener('keydown',function(e){if(e.key==='Enter')runAnalysis();});
+document.getElementById('unlockBtn').addEventListener('click',async function(){
+  var name=document.getElementById('gateName').value.trim();
+  var phone=document.getElementById('gatePhone').value.trim();
+  var email=document.getElementById('gateEmail').value.trim();
   if(!name||!email)return;
-  const btn=document.getElementById('unlockBtn');
+  var btn=document.getElementById('unlockBtn');
   btn.disabled=true;btn.textContent='Submitting...';
-  try{await fetch('https://formspree.io/f/mjgaakzd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,phone,email})});}catch(e){}
+  try{await fetch('https://formspree.io/f/mjgaakzd',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,phone:phone,email:email})});}catch(e){}
   document.getElementById('gateForm').style.display='none';
   document.getElementById('gateSuccess').style.display='block';
-  setTimeout(()=>{
+  setTimeout(function(){
     document.getElementById('reportGate').style.display='none';
     document.getElementById('reportContent').classList.remove('report-blur');
     document.getElementById('reportContent').style.pointerEvents='auto';
