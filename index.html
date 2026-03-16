@@ -29,8 +29,6 @@
     content: ''; position: fixed; inset: 0; pointer-events: none;
     background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(201,168,76,0.06) 0%, transparent 70%);
   }
-
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 0 2.5rem; height: 54px;
@@ -41,8 +39,6 @@
   .nav-logo { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; }
   .nav-sub { font-family: var(--sans); font-size: 8px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
   .nav-tag { font-family: var(--sans); font-size: 8px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 10px; }
-
-  /* HERO */
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -67,8 +63,6 @@
     font-family: var(--sans); font-size: 12px; font-weight: 300;
     color: var(--muted); max-width: 440px; line-height: 1.9; margin-bottom: 3rem; letter-spacing: 0.3px;
   }
-
-  /* INPUT */
   .input-card {
     width: 100%; max-width: 560px;
     border: 1px solid var(--border2); background: rgba(12,16,24,0.7);
@@ -93,7 +87,6 @@
   }
   .btn-analyze:hover { opacity: 0.85; }
   .btn-analyze:disabled { opacity: 0.3; cursor: not-allowed; }
-
   .status-bar {
     width: 100%; max-width: 560px; margin-top: 1rem;
     font-family: var(--sans); font-size: 9px; font-weight: 300; letter-spacing: 2px;
@@ -109,12 +102,7 @@
     color: var(--danger); padding: 10px 14px;
     border: 1px solid rgba(192,102,90,0.3); background: rgba(192,102,90,0.05); display: none;
   }
-
-  /* FEATURES */
-  .features {
-    position: relative; z-index: 1;
-    border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-  }
+  .features { position: relative; z-index: 1; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .features-label {
     font-family: var(--sans); font-size: 8px; font-weight: 400; letter-spacing: 4px;
     text-transform: uppercase; color: var(--muted); text-align: center;
@@ -131,15 +119,11 @@
   .feat-tag:nth-child(3n) { border-right: none; }
   .feat-tag:nth-child(n+4) { border-bottom: none; }
   .feat-dot { width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
-
-  /* STATS */
   .stats { position: relative; z-index: 1; display: flex; border-bottom: 1px solid var(--border); }
   .stat { flex: 1; padding: 1.5rem; text-align: center; border-right: 1px solid var(--border); }
   .stat:last-child { border-right: none; }
   .stat-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--gold); line-height: 1; }
   .stat-label { font-family: var(--sans); font-size: 8px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
-
-  /* REPORT */
   .report { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 6rem; display: none; }
   .report-divider {
     display: flex; align-items: center; gap: 16px; margin-bottom: 2rem;
@@ -147,7 +131,6 @@
     text-transform: uppercase; color: var(--gold);
   }
   .report-divider::before, .report-divider::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
-
   .panel { border: 1px solid var(--border); background: rgba(12,16,24,0.6); margin-bottom: 2px; }
   .panel-header {
     padding: 10px 1.5rem; border-bottom: 1px solid var(--border);
@@ -156,11 +139,9 @@
   }
   .panel-body { padding: 1.5rem; }
   .panel-group { margin-bottom: 1.5rem; }
-
   .report-meta { font-family: var(--sans); font-size: 9px; font-weight: 300; letter-spacing: 1px; color: var(--muted); margin-bottom: 8px; }
   .report-company { font-family: var(--serif); font-size: 30px; font-weight: 300; margin-bottom: 4px; }
   .report-domain { font-family: var(--sans); font-size: 10px; font-weight: 300; color: var(--gold); letter-spacing: 2px; }
-
   .score-layout { display: flex; align-items: center; gap: 1.5rem; }
   .score-box { width: 78px; height: 78px; border: 1px solid; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
   .score-num { font-family: var(--serif); font-size: 32px; font-weight: 300; line-height: 1; }
@@ -170,11 +151,9 @@
   .c-high { border-color: var(--danger); color: var(--danger); }
   .verdict-label { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 7px; }
   .verdict-desc { font-family: var(--sans); font-size: 11px; font-weight: 300; color: var(--muted); line-height: 1.75; }
-
   .kv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.25rem; }
   .kv-label { font-family: var(--sans); font-size: 8px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
   .kv-value { font-family: var(--serif); font-size: 16px; font-weight: 300; line-height: 1.45; }
-
   .bar-list { display: flex; flex-direction: column; gap: 1.25rem; }
   .bar-header { display: flex; justify-content: space-between; margin-bottom: 5px; }
   .bar-name { font-family: var(--sans); font-size: 9px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; }
@@ -182,23 +161,18 @@
   .bar-track { height: 1px; background: rgba(255,255,255,0.07); margin-bottom: 6px; }
   .bar-fill { height: 100%; transition: width 0.8s ease; }
   .bar-note { font-family: var(--sans); font-size: 10px; font-weight: 300; color: var(--muted); line-height: 1.7; }
-
   .flag-list { display: flex; flex-direction: column; gap: 8px; }
   .flag-item { display: flex; gap: 12px; align-items: flex-start; padding: 10px 14px; border: 1px solid rgba(192,102,90,0.2); background: rgba(192,102,90,0.04); }
   .flag-sq { width: 5px; height: 5px; background: var(--danger); flex-shrink: 0; margin-top: 5px; }
   .flag-text { font-family: var(--sans); font-size: 11px; font-weight: 300; line-height: 1.65; }
-
   .step-list { display: flex; flex-direction: column; gap: 8px; }
   .step-item { display: flex; gap: 14px; align-items: flex-start; padding: 10px 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); }
   .step-n { font-family: var(--serif); font-size: 18px; font-weight: 300; color: var(--gold); flex-shrink: 0; line-height: 1; margin-top: 1px; min-width: 20px; }
   .step-text { font-family: var(--sans); font-size: 11px; font-weight: 300; line-height: 1.7; }
-
   .conclusion-text { font-family: var(--serif); font-size: 18px; font-weight: 300; line-height: 1.85; font-style: italic; }
   .report-footnote { font-family: var(--sans); font-size: 9px; font-weight: 300; letter-spacing: 0.5px; color: var(--muted); line-height: 1.7; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
-
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
   footer span { font-family: var(--sans); font-size: 9px; font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
-
   @media (max-width: 560px) {
     .input-row { flex-wrap: wrap; }
     .btn-analyze { width: 100%; text-align: center; }
@@ -336,19 +310,10 @@ async function runAnalysis(){
   btn.disabled=true;errEl.style.display='none';document.getElementById('report').style.display='none';
   startStatus();
   try{
-    const res=await fetch('https://api.anthropic.com/v1/messages',{
+    const res=await fetch('/api/analyze',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':'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',
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
-      body:JSON.stringify({
-        model:'claude-haiku-4-5-20251001',
-        max_tokens:3000,
-        messages:[{role:'user',content:`Analyze supplier domain "${supplier}". Return ONLY valid JSON no markdown: {"company_name":"","website":"${supplier}","address":"","domain_age":"","business_category":"","overall_score":5.0,"verdict":"MODERATE RISK","verdict_summary":"","categories":[{"name":"Domain Age Risk","score":5,"explanation":""},{"name":"Fraud Scanner Risk","score":5,"explanation":""},{"name":"Amazon Compliance Risk","score":5,"explanation":""},{"name":"Review Quality Risk","score":5,"explanation":""},{"name":"Transparency Risk","score":5,"explanation":""},{"name":"Brand Authorization Risk","score":5,"explanation":""},{"name":"Physical Presence Risk","score":5,"explanation":""}],"red_flags":[],"due_diligence_steps":[],"conclusion":"","data_sources_note":""}`}]
-      })
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({supplier})
     });
     const d=await res.json();
     if(!res.ok)throw new Error(d.error?.message||'API error');
