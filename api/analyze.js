@@ -68,7 +68,7 @@ export default async function handler(req, res) {
         'anthropic-beta': 'web-search-2025-03-05',
       },
       body: JSON.stringify({
-        model: 'claude-sonnet-4-5-20250929',
+        model: 'claude-sonnet-4-6',
         max_tokens: 2500,
         tools: [
           {
