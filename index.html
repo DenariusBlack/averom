@@ -38,7 +38,10 @@
   }
   .nav-logo { font-family: var(--sans); font-size: 14px; font-weight: 600; letter-spacing: 5px; text-transform: uppercase; }
   .nav-sub { font-family: var(--sans); font-size: 10px; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-top: 2px; }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
   .nav-tag { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 4px 10px; }
+  .nav-pro-btn { font-family: var(--sans); font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); background: var(--gold); border: none; padding: 6px 14px; cursor: pointer; transition: opacity 0.2s; }
+  .nav-pro-btn:hover { opacity: 0.85; }
   .hero {
     min-height: 100vh; display: flex; flex-direction: column;
     align-items: center; justify-content: center;
@@ -61,7 +64,12 @@
   }
   .hero-desc {
     font-family: var(--sans); font-size: 14px; font-weight: 300;
-    color: var(--muted); max-width: 440px; line-height: 1.9; margin-bottom: 3rem; letter-spacing: 0.3px;
+    color: var(--muted); max-width: 440px; line-height: 1.9; margin-bottom: 1rem; letter-spacing: 0.3px;
+  }
+  .free-badge {
+    font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim);
+    padding: 5px 14px; margin-bottom: 2.5rem; display: inline-block;
   }
   .input-card {
     width: 100%; max-width: 560px;
@@ -122,6 +130,30 @@
   .stat:last-child { border-right: none; }
   .stat-num { font-family: var(--serif); font-size: 36px; font-weight: 300; color: var(--gold); line-height: 1; }
   .stat-label { font-family: var(--sans); font-size: 11px; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .pricing-section { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 4rem 1.5rem; display: none; }
+  .pricing-divider {
+    display: flex; align-items: center; gap: 16px; margin-bottom: 2rem;
+    font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 4px;
+    text-transform: uppercase; color: var(--gold);
+  }
+  .pricing-divider::before, .pricing-divider::after { content: ''; flex: 1; height: 1px; background: var(--border2); }
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .pricing-card { border: 1px solid var(--border); background: rgba(12,16,24,0.6); padding: 2rem; }
+  .pricing-card.featured { border-color: var(--gold); }
+  .pricing-plan { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .pricing-price { font-family: var(--serif); font-size: 48px; font-weight: 300; line-height: 1; margin-bottom: 0.5rem; }
+  .pricing-period { font-family: var(--sans); font-size: 11px; font-weight: 300; color: var(--muted); margin-bottom: 1.5rem; }
+  .pricing-features { list-style: none; margin-bottom: 2rem; }
+  .pricing-features li { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--muted); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
+  .pricing-features li::before { content: ''; width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
+  .btn-subscribe {
+    width: 100%; background: var(--gold); color: var(--navy); border: none; padding: 12px;
+    font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-subscribe:hover { opacity: 0.85; }
+  .btn-free { width: 100%; background: transparent; color: var(--text); border: 1px solid var(--border2); padding: 12px; font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 2.5px; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+  .btn-free:hover { opacity: 0.7; }
   .report { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 3rem 1.5rem 6rem; display: none; }
   .report-divider {
     display: flex; align-items: center; gap: 16px; margin-bottom: 2rem;
@@ -169,6 +201,15 @@
   .step-text { font-family: var(--sans); font-size: 13px; font-weight: 300; line-height: 1.7; }
   .conclusion-text { font-family: var(--serif); font-size: 18px; font-weight: 300; line-height: 1.85; font-style: italic; }
   .report-footnote { font-family: var(--sans); font-size: 11px; font-weight: 300; letter-spacing: 0.5px; color: var(--muted); line-height: 1.7; margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid var(--border); }
+  .report-actions { display: flex; gap: 10px; margin-top: 1.5rem; }
+  .btn-pdf {
+    flex: 1; background: transparent; color: var(--gold); border: 1px solid var(--gold-dim); padding: 12px;
+    font-family: var(--sans); font-size: 11px; font-weight: 500; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer; transition: opacity 0.2s;
+  }
+  .btn-pdf:hover { opacity: 0.7; }
+  .btn-new { flex: 1; background: var(--gold); color: var(--navy); border: none; padding: 12px; font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+  .btn-new:hover { opacity: 0.85; }
   .report-locked { position: relative; }
   .report-blur { filter: blur(6px); pointer-events: none; user-select: none; }
   .report-gate {
@@ -201,6 +242,30 @@
   .btn-unlock:disabled { opacity: 0.3; cursor: not-allowed; }
   .gate-success { display: none; padding: 1rem 0; }
   .gate-success-text { font-family: var(--serif); font-size: 20px; font-weight: 300; color: var(--gold); }
+  .paywall {
+    position: fixed; inset: 0; z-index: 200; background: rgba(12,16,24,0.97);
+    display: none; align-items: center; justify-content: center;
+  }
+  .paywall-card {
+    width: 100%; max-width: 500px; border: 1px solid var(--border2);
+    background: var(--navy); padding: 3rem 2rem; text-align: center; margin: 1rem;
+  }
+  .paywall-eyebrow { font-family: var(--sans); font-size: 10px; font-weight: 500; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+  .paywall-title { font-family: var(--serif); font-size: 32px; font-weight: 300; line-height: 1.2; margin-bottom: 0.75rem; }
+  .paywall-desc { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; margin-bottom: 2rem; }
+  .paywall-price { font-family: var(--serif); font-size: 48px; font-weight: 300; color: var(--gold); margin-bottom: 0.5rem; }
+  .paywall-period { font-family: var(--sans); font-size: 11px; font-weight: 300; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2rem; }
+  .paywall-features { list-style: none; margin-bottom: 2rem; text-align: left; }
+  .paywall-features li { font-family: var(--sans); font-size: 12px; font-weight: 300; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--border); display: flex; gap: 10px; align-items: center; }
+  .paywall-features li::before { content: ''; width: 4px; height: 4px; background: var(--gold); flex-shrink: 0; }
+  .btn-upgrade {
+    width: 100%; background: var(--gold); color: var(--navy); border: none; padding: 14px;
+    font-family: var(--sans); font-size: 11px; font-weight: 600; letter-spacing: 2.5px;
+    text-transform: uppercase; cursor: pointer; margin-bottom: 10px; transition: opacity 0.2s;
+  }
+  .btn-upgrade:hover { opacity: 0.85; }
+  .btn-dismiss { font-family: var(--sans); font-size: 10px; font-weight: 300; color: var(--muted); background: none; border: none; cursor: pointer; letter-spacing: 1px; text-transform: uppercase; }
+  .reports-counter { font-family: var(--sans); font-size: 10px; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-top: 8px; }
   footer { position: relative; z-index: 1; border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
   footer span { font-family: var(--sans); font-size: 11px; font-weight: 300; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
   @media (max-width: 560px) {
@@ -210,22 +275,51 @@
     .features-grid { grid-template-columns: repeat(2, 1fr); }
     .stats { flex-wrap: wrap; }
     .stat { min-width: 50%; border-bottom: 1px solid var(--border); }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .report-actions { flex-direction: column; }
   }
 </style>
 </head>
 <body>
+
 <nav>
   <div>
     <div class="nav-logo">Averom</div>
     <div class="nav-sub">Supplier Risk Intelligence</div>
   </div>
-  <div class="nav-tag">Early Access</div>
+  <div class="nav-right">
+    <div class="nav-tag" id="reportCounter">3 Free Reports</div>
+    <button class="nav-pro-btn" onclick="showPaywall()">Upgrade Pro</button>
+  </div>
 </nav>
+
+<div class="paywall" id="paywall">
+  <div class="paywall-card">
+    <div class="paywall-eyebrow">You've used your free reports</div>
+    <h2 class="paywall-title">Upgrade to Averom Pro</h2>
+    <p class="paywall-desc">You've run 3 free supplier analyses. Upgrade to continue verifying suppliers without limits.</p>
+    <div class="paywall-price">$19</div>
+    <div class="paywall-period">per month</div>
+    <ul class="paywall-features">
+      <li>Unlimited supplier reports</li>
+      <li>AI web search verification</li>
+      <li>Real-time fraud detection</li>
+      <li>PDF export for every report</li>
+      <li>Priority analysis speed</li>
+    </ul>
+    <button class="btn-upgrade" id="upgradeBtn">Start Pro — $19/month</button>
+    <br />
+    <button class="btn-dismiss" onclick="document.getElementById('paywall').style.display='none'">Maybe later</button>
+  </div>
+</div>
+
 <div class="hero">
   <div class="hero-eyebrow">AI-Powered Due Diligence</div>
   <h1>Know your supplier<br /><em>before</em> they cost you.</h1>
   <div class="hero-sub">Verify Before You Wire</div>
   <p class="hero-desc">Averom analyzes suppliers in seconds — flagging fraud signals, legitimacy gaps, and compliance risks before you commit capital or inventory.</p>
+  <div class="free-badge">3 Free Reports · No Credit Card</div>
+
   <div class="input-card">
     <div class="input-label">Enter Supplier Domain</div>
     <div class="input-row">
@@ -237,6 +331,7 @@
   <div class="status-bar" id="statusBar"><div class="status-dot"></div><span id="statusText">Initializing intelligence scan</span></div>
   <div class="error-bar" id="errorBar"></div>
 </div>
+
 <div class="features">
   <div class="features-label">Built for Ecommerce · B2B · Import &amp; Export</div>
   <div class="features-grid">
@@ -248,11 +343,13 @@
     <div class="feat-tag"><div class="feat-dot"></div>Instant AI Reports</div>
   </div>
 </div>
+
 <div class="stats">
-  <div class="stat"><div class="stat-num">7s</div><div class="stat-label">Avg. Report Time</div></div>
+  <div class="stat"><div class="stat-num">30s</div><div class="stat-label">Avg. Report Time</div></div>
   <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Risk Signals Checked</div></div>
-  <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Early Access Cost</div></div>
+  <div class="stat"><div class="stat-num">$19</div><div class="stat-label">Pro / Month</div></div>
 </div>
+
 <div class="report" id="report">
   <div class="report-divider">Intelligence Report</div>
   <div class="report-locked" id="reportLocked">
@@ -293,7 +390,12 @@
           <div class="panel-body"><div class="conclusion-text" id="conclusionText"></div><div class="report-footnote" id="reportFootnote"></div></div>
         </div>
       </div>
+      <div class="report-actions">
+        <button class="btn-pdf" onclick="exportPDF()">Download PDF Report</button>
+        <button class="btn-new" onclick="newReport()">Analyze Another Supplier</button>
+      </div>
     </div>
+
     <div class="report-gate" id="reportGate">
       <div class="gate-card">
         <div class="gate-eyebrow">Your Report Is Ready</div>
@@ -312,23 +414,64 @@
     </div>
   </div>
 </div>
+
 <footer>
   <span>© 2025 Averom</span>
   <span>AI Intelligence · Not Legal Advice</span>
 </footer>
+
 <script>
 var SB_URL='https://tayxymrvgesjvfiljntx.supabase.co';
 var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRheXh5bXJ2Z2VzanZmaWxqbnR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM2NDE2ODQsImV4cCI6MjA4OTIxNzY4NH0.8D7lMPMJqXXksc4ZWWeiLJWx_I1lk0IcLbIJRpOHLAA';
-var STATUS=['Scanning domain registration records','Checking fraud databases','Searching BBB and business registry','Analyzing Amazon compliance signals','Cross-referencing review patterns','Verifying physical presence','Calculating weighted risk score','Generating intelligence report'];
+var FREE_LIMIT=3;
+var currentReport=null;
+var currentDomain='';
+
+function getUsage(){return parseInt(localStorage.getItem('av_usage')||'0');}
+function isPro(){return localStorage.getItem('av_pro')==='true';}
+function updateCounter(){
+  var used=getUsage();
+  var remaining=Math.max(0,FREE_LIMIT-used);
+  if(isPro()){
+    document.getElementById('reportCounter').textContent='Pro — Unlimited';
+    document.getElementById('reportCounter').style.color='var(--gold)';
+  } else {
+    document.getElementById('reportCounter').textContent=remaining+' Free Report'+(remaining===1?'':'s')+' Left';
+  }
+}
+
+function showPaywall(){
+  document.getElementById('paywall').style.display='flex';
+}
+
+document.getElementById('upgradeBtn').addEventListener('click',async function(){
+  var btn=document.getElementById('upgradeBtn');
+  btn.textContent='Redirecting...';
+  btn.disabled=true;
+  try{
+    var res=await fetch('/api/checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:''})});
+    var d=await res.json();
+    if(d.url)window.location.href=d.url;
+    else{btn.textContent='Start Pro — $19/month';btn.disabled=false;}
+  }catch(e){btn.textContent='Start Pro — $19/month';btn.disabled=false;}
+});
+
+var STATUS=['Searching web for supplier information','Checking fraud databases and scam reports','Verifying business registration records','Analyzing Amazon compliance signals','Cross-referencing review platforms','Checking physical presence and address','Calculating weighted risk score','Generating intelligence report'];
 var statusTimer;
-function startStatus(){var i=0;var el=document.getElementById('statusText');document.getElementById('statusBar').style.display='flex';el.textContent=STATUS[0];statusTimer=setInterval(function(){i=(i+1)%STATUS.length;el.textContent=STATUS[i];},2200);}
+function startStatus(){var i=0;var el=document.getElementById('statusText');document.getElementById('statusBar').style.display='flex';el.textContent=STATUS[0];statusTimer=setInterval(function(){i=(i+1)%STATUS.length;el.textContent=STATUS[i];},3000);}
 function stopStatus(){clearInterval(statusTimer);document.getElementById('statusBar').style.display='none';}
+
+// DO NOT CHANGE - High score = high risk
 function scoreClass(s){return s<=3.5?'c-low':s<=6.5?'c-med':'c-high';}
 function barColor(s){return s<=3?'#5A8A5A':s<=6?'#C9A84C':'#C0665A';}
+
 function saveReport(report,domain){
   fetch(SB_URL+'/rest/v1/reports',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify({domain:domain,company_name:report.company_name||'',overall_score:report.overall_score||0,verdict:report.verdict||'',full_report:report})}).catch(function(){});
 }
+
 function render(data,domain){
+  currentReport=data;
+  currentDomain=domain;
   var ts=new Date();
   var id='AVR-'+ts.getFullYear()+String(ts.getMonth()+1).padStart(2,'0')+String(ts.getDate()).padStart(2,'0')+'-'+Math.floor(Math.random()*9000+1000);
   document.getElementById('reportMeta').textContent=id+' · '+ts.toLocaleString();
@@ -344,14 +487,63 @@ function render(data,domain){
   document.getElementById('flagList').innerHTML=(data.red_flags||[]).length?(data.red_flags||[]).map(function(f){return '<div class="flag-item"><div class="flag-sq"></div><div class="flag-text">'+f+'</div></div>';}).join(''):'<div class="flag-text" style="color:var(--muted)">No major red flags identified.</div>';
   document.getElementById('stepList').innerHTML=(data.due_diligence_steps||[]).map(function(s,i){return '<div class="step-item"><div class="step-n">'+(i+1)+'.</div><div class="step-text">'+s+'</div></div>';}).join('');
   document.getElementById('conclusionText').textContent=data.conclusion;
-  document.getElementById('reportFootnote').textContent=(data.data_sources_note||'Report generated via AI-assisted web intelligence.')+' · This report is for due diligence purposes only and does not constitute legal or financial advice.';
+  document.getElementById('reportFootnote').textContent=(data.data_sources_note||'Report generated via AI web search intelligence.')+' · This report is for due diligence purposes only and does not constitute legal or financial advice.';
   document.getElementById('report').style.display='block';
   document.getElementById('report').scrollIntoView({behavior:'smooth',block:'start'});
   saveReport(data,domain);
 }
+
+function newReport(){
+  document.getElementById('report').style.display='none';
+  document.getElementById('supplierInput').value='';
+  document.getElementById('reportContent').classList.add('report-blur');
+  document.getElementById('reportContent').style.pointerEvents='none';
+  document.getElementById('reportGate').style.display='flex';
+  document.getElementById('gateForm').style.display='block';
+  document.getElementById('gateSuccess').style.display='none';
+  document.getElementById('unlockBtn').disabled=false;
+  document.getElementById('unlockBtn').textContent='Access Report';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function exportPDF(){
+  if(!currentReport)return;
+  var content='AVEROM SUPPLIER RISK REPORT\n';
+  content+='================================\n\n';
+  content+='Company: '+currentReport.company_name+'\n';
+  content+='Website: '+currentReport.website+'\n';
+  content+='Address: '+(currentReport.address||'N/A')+'\n';
+  content+='Domain Age: '+(currentReport.domain_age||'N/A')+'\n';
+  content+='Category: '+(currentReport.business_category||'N/A')+'\n\n';
+  content+='OVERALL RISK SCORE: '+currentReport.overall_score+'/10\n';
+  content+='VERDICT: '+currentReport.verdict+'\n\n';
+  content+=currentReport.verdict_summary+'\n\n';
+  content+='RISK BREAKDOWN\n--------------\n';
+  (currentReport.categories||[]).forEach(function(c){content+=c.name+': '+c.score+'/10\n'+c.explanation+'\n\n';});
+  content+='RED FLAGS\n---------\n';
+  (currentReport.red_flags||[]).forEach(function(f,i){content+=(i+1)+'. '+f+'\n';});
+  content+='\nDUE DILIGENCE STEPS\n-------------------\n';
+  (currentReport.due_diligence_steps||[]).forEach(function(s,i){content+=(i+1)+'. '+s+'\n';});
+  content+='\nCONCLUSION\n----------\n'+currentReport.conclusion+'\n\n';
+  content+='Report generated by Averom · averom.co · Not legal advice\n';
+  var blob=new Blob([content],{type:'text/plain'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;
+  a.download='Averom-Report-'+currentDomain+'-'+new Date().toISOString().slice(0,10)+'.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 async function runAnalysis(){
   var raw=document.getElementById('supplierInput').value.trim();
   if(!raw)return;
+
+  if(!isPro()&&getUsage()>=FREE_LIMIT){
+    showPaywall();
+    return;
+  }
+
   var supplier=raw.replace(/^https?:\/\//i,'').replace(/\/.*$/,'');
   var btn=document.getElementById('analyzeBtn');
   var errEl=document.getElementById('errorBar');
@@ -364,12 +556,22 @@ async function runAnalysis(){
     var text=(d.content||[]).filter(function(b){return b.type==='text';}).map(function(b){return b.text;}).join('').replace(/```json|```/g,'').trim();
     var match=text.match(/\{[\s\S]*\}/);
     if(!match)throw new Error('No report generated');
-    stopStatus();render(JSON.parse(match[0]),supplier);
+    stopStatus();
+
+    if(!isPro()){
+      var newUsage=getUsage()+1;
+      localStorage.setItem('av_usage',newUsage);
+      updateCounter();
+    }
+
+    render(JSON.parse(match[0]),supplier);
   }catch(err){stopStatus();errEl.textContent='Error: '+err.message;errEl.style.display='block';}
   finally{btn.disabled=false;}
 }
+
 document.getElementById('analyzeBtn').addEventListener('click',runAnalysis);
 document.getElementById('supplierInput').addEventListener('keydown',function(e){if(e.key==='Enter')runAnalysis();});
+
 document.getElementById('unlockBtn').addEventListener('click',async function(){
   var name=document.getElementById('gateName').value.trim();
   var phone=document.getElementById('gatePhone').value.trim();
@@ -387,6 +589,14 @@ document.getElementById('unlockBtn').addEventListener('click',async function(){
     document.getElementById('reportContent').style.userSelect='auto';
   },1000);
 });
+
+if(window.location.search.includes('paid=true')){
+  localStorage.setItem('av_pro','true');
+  localStorage.removeItem('av_usage');
+  window.history.replaceState({},'','/');
+}
+
+updateCounter();
 </script>
 </body>
 </html>
