@@ -40,32 +40,7 @@ VERDICT LABELS:
 6.0–7.9 = HIGH RISK — Do not proceed without extensive verification
 8.0–10.0 = CRITICAL RISK — Strong fraud indicators, do not engage
 
-OUTPUT FORMAT:
-Respond ONLY with a valid JSON object. No preamble, no markdown, no explanation outside the JSON. Structure:
-
-{
-  "company_name": "string",
-  "website": "string",
-  "address": "string or 'Not publicly disclosed'",
-  "domain_age": "string (e.g. '2 years, 3 months' or 'Unknown')",
-  "business_category": "string",
-  "overall_score": number (0.0–10.0),
-  "verdict": "LOW RISK | MODERATE RISK | HIGH RISK | CRITICAL RISK",
-  "verdict_summary": "2–3 sentence plain-English summary of why this score was assigned",
-  "categories": [
-    { "name": "Domain Age Risk", "score": number, "explanation": "string" },
-    { "name": "Fraud Scanner Risk", "score": number, "explanation": "string" },
-    { "name": "Amazon Compliance Risk", "score": number, "explanation": "string" },
-    { "name": "Review Quality Risk", "score": number, "explanation": "string" },
-    { "name": "Transparency Risk", "score": number, "explanation": "string" },
-    { "name": "Brand Authorization Risk", "score": number, "explanation": "string" },
-    { "name": "Physical Presence Risk", "score": number, "explanation": "string" }
-  ],
-  "red_flags": ["string", "string"],
-  "due_diligence_steps": ["string", "string"],
-  "conclusion": "string (2–4 sentences final assessment and recommendation)",
-  "data_sources_note": "string (brief note on what data was available and what was estimated)"
-}
+Return ONLY valid JSON with these fields: company_name, website, address, domain_age, business_category, overall_score, verdict, verdict_summary, supplier_category, categories (array of 7 risk scores), red_flags, due_diligence_steps, conclusion, safety_protocol, data_sources_note.
 
 IMPORTANT RULES:
 - If you don't have specific knowledge about a supplier, state that clearly and assign moderate-to-high scores reflecting the uncertainty.
