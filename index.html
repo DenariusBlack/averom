@@ -462,9 +462,8 @@ function startStatus(){var i=0;var el=document.getElementById('statusText');docu
 function stopStatus(){clearInterval(statusTimer);document.getElementById('statusBar').style.display='none';}
 
 // DO NOT CHANGE - High score = high risk
-function scoreClass(s){return s<=3.5?'c-low':s<=6.5?'c-med':'c-high';}
-function barColor(s){return s<=3?'#5A8A5A':s<=6?'#C9A84C':'#C0665A';}
-
+function scoreClass(s){return s>=7?'c-low':s>=4?'c-med':'c-high';}
+function barColor(s){return s>=7?'#5A8A5A':s>=4?'#C9A84C':'#C0665A';}
 function saveReport(report,domain){
   fetch(SB_URL+'/rest/v1/reports',{method:'POST',headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY,'Prefer':'return=minimal'},body:JSON.stringify({domain:domain,company_name:report.company_name||'',overall_score:report.overall_score||0,verdict:report.verdict||'',full_report:report})}).catch(function(){});
 }
@@ -487,7 +486,7 @@ function render(data,domain){
   document.getElementById('flagList').innerHTML=(data.red_flags||[]).length?(data.red_flags||[]).map(function(f){return '<div class="flag-item"><div class="flag-sq"></div><div class="flag-text">'+f+'</div></div>';}).join(''):'<div class="flag-text" style="color:var(--muted)">No major red flags identified.</div>';
   document.getElementById('stepList').innerHTML=(data.due_diligence_steps||[]).map(function(s,i){return '<div class="step-item"><div class="step-n">'+(i+1)+'.</div><div class="step-text">'+s+'</div></div>';}).join('');
   document.getElementById('conclusionText').textContent=data.conclusion;
-  document.getElementById('reportFootnote').textContent=(data.data_sources_note||'Report generated via AI web search intelligence.')+' · This report is for due diligence purposes only and does not constitute legal or financial advice.';
+  document.getElementById('reportFootnote').textContent='This report is for due diligence purposes only and does not constitute legal or financial advice.';
   document.getElementById('report').style.display='block';
   document.getElementById('report').scrollIntoView({behavior:'smooth',block:'start'});
   saveReport(data,domain);
