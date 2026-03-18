@@ -337,6 +337,85 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
+  /* Pricing */
+  .pricing {
+    max-width: 900px; margin: 0 auto;
+    padding: 4rem 2rem 3rem;
+    text-align: center;
+    opacity: 0; animation: fade-up 0.9s ease 1.2s forwards;
+  }
+  .pricing-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 300;
+    color: var(--white); margin-bottom: 0.4em;
+  }
+  .pricing-heading em { font-style: italic; color: var(--gold); }
+  .pricing-sub {
+    font-size: 0.85rem; color: var(--muted); max-width: 440px;
+    margin: 0 auto 2.5rem; line-height: 1.7;
+  }
+  .pricing-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .pricing-card {
+    background: rgba(13,27,42,0.6);
+    border: 1px solid var(--border);
+    padding: 2rem 1.5rem;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.6rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  .pricing-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 0 32px var(--gold-glow);
+  }
+  .pricing-card.featured {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.06);
+  }
+  .pricing-tier {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.55rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .pricing-amount {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 600;
+    color: var(--white); line-height: 1;
+  }
+  .pricing-amount sup {
+    font-size: 1.2rem; vertical-align: super;
+    margin-right: 2px;
+  }
+  .pricing-desc {
+    font-size: 0.8rem; color: var(--muted);
+    line-height: 1.6; margin-bottom: 0.6rem;
+  }
+  .pricing-btn {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    padding: 0.7rem 1.8rem;
+    border: 1px solid var(--gold); color: var(--gold);
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.25s, color 0.25s;
+  }
+  .pricing-btn:hover {
+    background: var(--gold); color: var(--navy);
+  }
+  .pricing-btn-solid {
+    background: var(--gold); color: var(--navy);
+    border-color: var(--gold);
+  }
+  .pricing-btn-solid:hover {
+    background: #dbbf6a; border-color: #dbbf6a;
+  }
+
   @media (max-width: 640px) {
     nav { padding: 1.2rem 1.5rem; }
     .hero { padding: 3rem 1.5rem 2rem; }
@@ -345,6 +424,7 @@
     .score-layout { flex-direction: column; text-align: center; }
     .kv-grid { grid-template-columns: 1fr 1fr; }
     footer { flex-direction: column; gap: 0.8rem; padding: 1.4rem 1.5rem; text-align: center; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 340px; margin: 0 auto; }
   }
 </style>
 </head>
@@ -361,7 +441,7 @@
     </div>
     <div class="nav-pills">
       <div class="nav-pill">3 Free Reports Left</div>
-      <div class="nav-pill-solid">Upgrade Pro</div>
+      <a href="#pricing" class="nav-pill-solid" style="text-decoration:none;">Upgrade Pro</a>
     </div>
   </nav>
 
@@ -395,6 +475,32 @@
       <div class="divider-line"></div>
     </div>
   </main>
+
+  <!-- Pricing -->
+  <section class="pricing" id="pricing">
+    <h2 class="pricing-heading">Unlock <em>deeper</em> intelligence</h2>
+    <p class="pricing-sub">Each report delivers AI-powered risk scoring, red-flag detection, and actionable due-diligence steps.</p>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-tier">1 Report</div>
+        <div class="pricing-amount"><sup>$</sup>9</div>
+        <div class="pricing-desc">Single supplier scan — perfect for a quick verification before wiring funds.</div>
+        <a href="https://buy.stripe.com/9B6cN7ak6gTfbpSexCaZi04" class="pricing-btn" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+      <div class="pricing-card featured">
+        <div class="pricing-tier">5 Reports</div>
+        <div class="pricing-amount"><sup>$</sup>39</div>
+        <div class="pricing-desc">Best value for sourcing — vet multiple suppliers before committing.</div>
+        <a href="https://buy.stripe.com/3cIaEZdwicCZ2Tm89eaZi05" class="pricing-btn pricing-btn-solid" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-tier">25 Reports</div>
+        <div class="pricing-amount"><sup>$</sup>99</div>
+        <div class="pricing-desc">Team-scale diligence — audit your entire supplier pipeline.</div>
+        <a href="https://buy.stripe.com/fZu6oJboabyV1Pi9diaZi06" class="pricing-btn" target="_blank" rel="noopener">Buy Now</a>
+      </div>
+    </div>
+  </section>
 
   <!-- Report (hidden until analysis completes) -->
   <div class="report" id="report">
